@@ -1,11 +1,14 @@
-#include <QApplication>
-#include "mainwindow.h"
+#include "app/Application.h"
+#include "app/Except.h"
+#include "app/QRunTime.h"
 
-int main(int argc, char* argv[]) {
-    QApplication app(argc, argv);
-    app.setApplicationName("3D Renderer");
-    app.setApplicationVersion("1.0");
-    MainWindow w;
-    w.show();
-    return app.exec();
+int main(int argc, char *argv[]) {
+    try {
+        r3d::QRunTime runtime(argc, argv);
+        r3d::Application application;
+        return application.run();
+    } catch (...) {
+        r3d::react();
+        return 1;
+    }
 }
