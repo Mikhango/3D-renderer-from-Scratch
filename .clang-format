@@ -1,0 +1,28 @@
+# Formatting rules for the 3D-renderer project.
+# Sorted includes are enforced via IncludeBlocks/IncludeCategories:
+#   1. the main header of the file ("core/...", "gui/...", "app/...");
+#   2. other project headers;
+#   3. Qt headers;
+#   4. Eigen headers;
+#   5. system headers.
+BasedOnStyle: LLVM
+Standard: c++20
+ColumnLimit: 100
+IndentWidth: 4
+AccessModifierOffset: -4
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: '^"[a-z]+/[A-Za-z]+\.(h|hpp)"$'
+    Priority: 1
+  - Regex: '^"[^"]*"$'
+    Priority: 2
+  - Regex: '^<Q[A-Z][^>]*>$'
+    Priority: 3
+  - Regex: '^<Eigen[^>]*>$'
+    Priority: 4
+  - Regex: '^<[^>]*>$'
+    Priority: 5
+SeparateDefinitionBlocks: Always
+AllowShortFunctionsOnASingleLine: Inline
+PointerAlignment: Right
